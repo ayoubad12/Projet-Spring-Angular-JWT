@@ -1,5 +1,6 @@
 package ma.enset.ebankingbackend.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,5 +16,6 @@ public class Customer {
     private String name;
     private String email;
     @OneToMany(mappedBy = "customer")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) //to avoid infinite serialization loop
     private List<BankAccount> bankAccounts;
 }

@@ -16,6 +16,7 @@ public class AccountOperation {
     private Long id;
     private Date operationDate;
     private double amount;
+    private String description;
     private OperationType type;
     @ManyToOne
     private BankAccount bankAccount;

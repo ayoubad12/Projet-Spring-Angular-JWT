@@ -29,14 +29,13 @@ public class EbankingBackendApplication {
 								 BankAccountRepository bankAccountRepository,
 								 CustomerRepository customerRepository) {
             return args -> {
-                Stream.of("Hassan", "Youssef", "Mohamed", "Abdellah", "Fatima", "Amina", "Sara", "Najat", "Hajar", "Naima")
+                Stream.of("ayoub", "adil", "ahmad", "yasser", "imane", "yousra", "yousef", "amine", "laila" )
                         .forEach(name -> {
                             Customer customer = new Customer();
                             customer.setName(name);
                             customer.setEmail(name + "@gmail.com");
                             customerRepository.save(customer);
                         });
-                //CurrentAccount : ID, RIB, balance, createdAt, status, customer, accountOperations
                 customerRepository.findAll().forEach(customer -> {
                     CurrentAccount currentAccount = new CurrentAccount();
                     currentAccount.setID(UUID.randomUUID().toString());
@@ -74,41 +73,4 @@ public class EbankingBackendApplication {
             };
         }
 
-//	@Bean
-//	CommandLineRunner start(BankAccountService bankAccountService) {
-//		return args -> {
-//			Stream.of("Hassan", "Youssef", "Mohamed", "Abdellah", "Fatima", "Amina", "Sara", "Najat", "Hajar", "Naima")
-//					.forEach(name -> {
-//						CustomerDTO customer = new CustomerDTO();
-//						customer.setFirstName(name);
-//						customer.setLastName("EL KADIRI");
-//						customer.setEmail(name + "@gmail.com");
-//						customer.setPhoneNumber("06 00 00 00 00");
-//						bankAccountService.saveCustomer(customer);
-//					});
-//			bankAccountService.listCustomers().forEach(customer -> {
-//				try {
-//					bankAccountService.saveCurrentBankAccount(Math.random() * 9000, 1000, customer.getID());
-//					bankAccountService.saveSavingBankAccount(Math.random() * 9000, 3.5, customer.getID());
-//					bankAccountService.listBankAccounts().forEach(bankAccount -> {
-//						for (int i=0; i<10; i++) {
-//							try {
-//								bankAccountService.deposit(bankAccount.getID(),Math.random() * 109000, "Deposit of today no " + i);
-//							} catch (BankAccountNotFoundException e) {
-//								throw new RuntimeException(e);
-//							}
-//							try {
-//								bankAccountService.withdraw(bankAccount.getID(),Math.random() * 9000, "Withdraw of today no " + i);
-//							} catch (BankAccountNotFoundException | InsufficientBalanceException e) {
-//								throw new RuntimeException(e);
-//							}
-//						}
-//					});
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			});
-//
-//		};
-//	}
 }
